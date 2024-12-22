@@ -36,6 +36,10 @@ void draw_menu() {
     draw_text(game_subtitle);
 }
 
+void draw_defeat_screen() {
+    draw_text(defeat_title);
+}
+
 void draw_game_overlay() {
     Text score = {
         "Score " + std::to_string(player_score),
@@ -69,12 +73,14 @@ void draw_level() {
                 case PLAYER:
                 case COIN:
                 case EXIT:
-                case JUMP_BOOST_POTION:
                     draw_image(air_image, pos, cell_size);
                     break;
                 case WALL:
                     draw_image(wall_image, pos, cell_size);
                     break;
+                case SPIKES:
+                    draw_image(spikes_image, pos, cell_size);
+                break;
             }
             // The second image layer
             switch (cell) {
@@ -85,7 +91,7 @@ void draw_level() {
                     draw_image(exit_image, pos, cell_size);
                     break;
                 case JUMP_BOOST_POTION:
-                    draw_image(jump_boost_potion, pos, cell_size);
+                    draw_image(jump_boost_potion_image, pos, cell_size);
                     break;
                 default:
                     break;

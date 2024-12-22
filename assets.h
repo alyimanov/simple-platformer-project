@@ -21,14 +21,18 @@ void load_images() {
     exit_image    = LoadTexture("data/images/exit.png");
     coin_sprite   = load_sprite("data/images/coin/coin",     ".png", 3, true, 18);
     player_sprite = load_sprite("data/images/player/player", ".png", 3, true, 10);
-    jump_boost_potion = LoadTexture("data/images/jump_boost_potion.png");
+    jump_boost_potion_image = LoadTexture("data/images/jump_boost_potion.png");
+    spikes_image = LoadTexture("data/images/spikes.png");
+    skeleton_sprite = load_sprite("data/images/skeleton/skeleton", ".png", 3, true, 10);
 }
 
 void unload_images() {
     UnloadTexture(wall_image);
     UnloadTexture(air_image);
     UnloadTexture(exit_image);
-    UnloadTexture(jump_boost_potion);
+    UnloadTexture(jump_boost_potion_image);
+    UnloadTexture(spikes_image);
+    unload_sprite(skeleton_sprite);
     unload_sprite(player_sprite);
     unload_sprite(coin_sprite);
 }

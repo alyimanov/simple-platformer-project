@@ -50,6 +50,11 @@ void update_game() {
                 game_state = MENU_STATE;
             }
             break;
+        case DEFEAT_STATE:
+            if (IsKeyPressed(KEY_ENTER)) {
+                game_state = MENU_STATE;
+            }
+        break;
     }
 
 }
@@ -73,6 +78,10 @@ void draw_game() {
             ClearBackground(BLACK);
             draw_victory_menu();
             break;
+        case DEFEAT_STATE:
+            ClearBackground(BLACK);
+            draw_defeat_screen();
+        break;
     }
 
 

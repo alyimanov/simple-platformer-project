@@ -43,13 +43,17 @@ void update_player() {
 
     if (is_colliding(player_pos, JUMP_BOOST_POTION)) {
         get_collider(player_pos, JUMP_BOOST_POTION) = ' ';
-        JUMP_STRENGTH = 0.35f;
-        PlaySound(coin_sound);
+        JUMP_STRENGTH = 0.34f;
     }
 
     if (is_colliding(player_pos, EXIT)) {
+        JUMP_STRENGTH = 0.3f;
         load_level(1);
         PlaySound(exit_sound);
+    }
+
+    if (is_colliding(player_pos, SPIKES)) {
+        game_state = DEFEAT_STATE;;
     }
 }
 
