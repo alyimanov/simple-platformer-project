@@ -22,8 +22,13 @@ void load_images() {
     coin_sprite   = load_sprite("data/images/coin/coin",     ".png", 3, true, 18);
     player_sprite = load_sprite("data/images/player/player", ".png", 3, true, 10);
     jump_boost_potion_image = LoadTexture("data/images/jump_boost_potion.png");
-    spikes_image = LoadTexture("data/images/spikes.png");
-    skeleton_sprite = load_sprite("data/images/skeleton/skeleton", ".png", 3, true, 10);
+    spikes_image  = LoadTexture("data/images/spikes.png");
+    skeleton_image = LoadTexture("data/images/skeleton0.png");
+    sword_image   = LoadTexture("data/images/sword.png");
+    lever_unactivated_image = LoadTexture("data/images/lever_unactivated.png");
+    lever_activated_image = LoadTexture("data/images/lever_activated.png");
+    graal_image = LoadTexture("data/images/graal.png");
+    door_image = LoadTexture("data/images/door.png");
 }
 
 void unload_images() {
@@ -32,7 +37,12 @@ void unload_images() {
     UnloadTexture(exit_image);
     UnloadTexture(jump_boost_potion_image);
     UnloadTexture(spikes_image);
-    unload_sprite(skeleton_sprite);
+    UnloadTexture(skeleton_image);
+    UnloadTexture(sword_image);
+    UnloadTexture(lever_unactivated_image);
+    UnloadTexture(lever_activated_image);
+    UnloadTexture(graal_image);
+    UnloadTexture(door_image);
     unload_sprite(player_sprite);
     unload_sprite(coin_sprite);
 }

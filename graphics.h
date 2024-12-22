@@ -80,7 +80,12 @@ void draw_level() {
                     break;
                 case SPIKES:
                     draw_image(spikes_image, pos, cell_size);
-                break;
+                    break;
+                case DOOR:
+                    if (!is_door_open) {
+                        draw_image(door_image, pos, cell_size);
+                    }
+                    break;
             }
             // The second image layer
             switch (cell) {
@@ -92,6 +97,39 @@ void draw_level() {
                     break;
                 case JUMP_BOOST_POTION:
                     draw_image(jump_boost_potion_image, pos, cell_size);
+                    break;
+                case SKELETON:
+                    draw_image(skeleton_image, pos, cell_size);
+                    break;
+                case SWORD:
+                        draw_image(sword_image, pos, cell_size);
+                    break;
+                case LEVER1:
+                    if (lever_activation1 == false) {
+                        draw_image(lever_unactivated_image, pos, cell_size);
+                        break;
+                    } if (lever_activation1 == true) {
+                        draw_image(lever_activated_image, pos, cell_size);
+                        break;
+                    }
+                case LEVER2:
+                    if (lever_activation2 == false) {
+                        draw_image(lever_unactivated_image, pos, cell_size);
+                        break;
+                    } if (lever_activation2 == true) {
+                        draw_image(lever_activated_image, pos, cell_size);
+                        break;
+                    }
+                case LEVER3:
+                    if (lever_activation3 == false) {
+                        draw_image(lever_unactivated_image, pos, cell_size);
+                        break;
+                    } if (lever_activation3 == true) {
+                        draw_image(lever_activated_image, pos, cell_size);
+                        break;
+                    }
+                case GRAAL:
+                    draw_image(graal_image, pos, cell_size);
                     break;
                 default:
                     break;

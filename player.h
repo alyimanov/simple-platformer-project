@@ -20,7 +20,8 @@ void move_player_horizontally(float delta) {
     float next_x = player_pos.x + delta;
     if (!is_colliding({next_x, player_pos.y}, WALL)) {
         player_pos.x = next_x;
-    } else {
+    }
+    else {
         player_pos.x = roundf(player_pos.x);
     }
 }
@@ -47,13 +48,65 @@ void update_player() {
     }
 
     if (is_colliding(player_pos, EXIT)) {
+        get_collider(player_pos, EXIT) = ' ';
         JUMP_STRENGTH = 0.3f;
         load_level(1);
         PlaySound(exit_sound);
     }
 
+    if (is_colliding(player_pos, SKELETON)) {
+        get_collider(player_pos, SKELETON) = ' ';
+        if (is_sword_picked == true) {
+            UnloadTexture(skeleton_image);
+            player_score += 100;
+        }
+        else {
+            game_state = DEFEAT_STATE;
+        }
+    }
+
+    if (is_colliding(player_pos, SWORD)) {
+        get_collider(player_pos, SWORD) = ' ';
+        is_sword_picked = true;
+    }
+
     if (is_colliding(player_pos, SPIKES)) {
-        game_state = DEFEAT_STATE;;
+        get_collider(player_pos, SPIKES) = ' ';
+        game_state = DEFEAT_STATE;
+    }
+
+    if (is_colliding(player_pos, LEVER1) && IsKeyPressed(KEY_F)) {
+        if (player_score >= 60) {
+            player_score -= 60;
+            lever_activation1 = true;
+        }
+    }
+
+    if (is_colliding(player_pos, LEVER2) && IsKeyPressed(KEY_F)) {
+        if (player_score >= 60) {
+            player_score -= 60;
+            lever_activation2 = true;
+        }
+    }
+
+    if (is_colliding(player_pos, LEVER3) && IsKeyPressed(KEY_F)) {
+        if (player_score >= 60) {
+            player_score -= 60;
+            lever_activation3 = true;
+        }
+    }
+
+    if (is_colliding(player_pos, GRAAL)) {
+        get_collider(player_pos, GRAAL) = ' ';
+        player_score+=10000;
+    }
+
+    if (lever_activation1 == true && lever_activation2 == true && lever_activation3 == true) {
+        is_door_open = true;
+    }
+
+    if (is_colliding(player_pos, DOOR) && !is_door_open) {
+        player_pos.x = roundf(player_pos.x);
     }
 }
 
