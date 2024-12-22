@@ -40,9 +40,16 @@ void update_player() {
         player_score+=10;
         PlaySound(coin_sound);
     }
-    if (is_colliding(player_pos, EXIT)) {
-        // TODO
 
+    if (is_colliding(player_pos, JUMP_BOOST_POTION)) {
+        get_collider(player_pos, JUMP_BOOST_POTION) = ' ';
+        JUMP_STRENGTH = 0.35f;
+        PlaySound(coin_sound);
+    }
+
+    if (is_colliding(player_pos, EXIT)) {
+        load_level(1);
+        PlaySound(exit_sound);
     }
 }
 

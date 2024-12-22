@@ -14,6 +14,7 @@ const char AIR    = ' ';
 const char PLAYER = '@';
 const char COIN   = '*';
 const char EXIT   = 'E';
+const char JUMP_BOOST_POTION = 'J';
 
 /* Levels */
 
@@ -37,13 +38,86 @@ level LEVEL_1 = {
     LEVEL_1_DATA
 };
 
-int level_index = 0;
-const int LEVEL_COUNT = 1;
-
-level LEVELS[LEVEL_COUNT] = {
-    LEVEL_1
+char LEVEL_2_DATA[] = {
+    '#', '#', '#', '#', '#', '#', '#', '#', '#', '#', '#',
+    '#', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', '#',
+    '#', ' ', '#', ' ', ' ', ' ', ' ', ' ', '#', ' ', '#',
+    '#', ' ', '#', ' ', ' ', '*', ' ', '#', ' ', ' ', '#',
+    '#', ' ', '#', ' ', ' ', ' ', ' ', '#', ' ', ' ', '#',
+    '#', '@', '#', ' ', ' ', ' ', ' ', '#', 'E', ' ', '#',
+    '#', '#', '#', '#', '#', '#', '#', '#', '#', '#', '#'
 };
 
+level LEVEL_2 = {
+    7, 11,
+    LEVEL_2_DATA
+};
+
+char LEVEL_3_DATA[] = {
+    '#', '#', '#', '#', '#', '#', '#', '#', '#', '#', '#',
+    '#', ' ', ' ', ' ', ' ', ' ', ' ', '*', ' ', 'E', '#',
+    '#', ' ', ' ', ' ', ' ', ' ', '*', ' ', '#', '#', '#',
+    '#', ' ', ' ', '#', ' ', '*', ' ', '#', '#', '#', '#',
+    '#', ' ', ' ', '#', ' ', ' ', '#', '#', '#', '#', '#',
+    '#', '@', ' ', '#', ' ', '#', '#', '#', '#', '#', '#',
+    '#', '#', '#', '#', '#', '#', '#', '#', '#', '#', '#'
+};
+
+level LEVEL_3 = {
+    7, 11,
+    LEVEL_3_DATA
+};
+
+char LEVEL_4_DATA[] = {
+    '#', '#', '#', '#', '#', '#',
+    '#', 'E', ' ', ' ', ' ', '#',
+    '#', '#', ' ', ' ', ' ', '#',
+    '#', ' ', ' ', ' ', ' ', '#',
+    '#', ' ', ' ', ' ', ' ', '#',
+    '#', ' ', ' ', ' ', ' ', '#',
+    '#', '#', ' ', ' ', ' ', '#',
+    '#', ' ', ' ', ' ', '#', '#',
+    '#', ' ', ' ', ' ', ' ', '#',
+    '#', ' ', ' ', ' ', ' ', '#',
+    '#', '@', ' ', ' ', ' ', '#',
+    '#', '#', '#', '#', '#', '#',
+};
+
+level LEVEL_4 = {
+    12, 6,
+    LEVEL_4_DATA
+};
+
+char LEVEL_5_DATA[] = {
+    '#', '#', '#', '#', '#', '#','#', '#', '#', '#', '#', '#',
+    '#', ' ', ' ', ' ', ' ', ' ',' ', ' ', ' ', ' ', ' ', '#',
+    '#', ' ', '#', '#', '#', '#','#', '#', '#', '#', ' ', '#',
+    '#', ' ', ' ', ' ', '#', ' ',' ', ' ', ' ', ' ', ' ', '#',
+    '#', ' ', ' ', ' ', '#', ' ',' ', ' ', ' ', ' ', ' ', '#',
+    '#', ' ', ' ', ' ', '#', ' ','#', '#', '#', '#', '#', '#',
+    '#', '#', '#', ' ', '#', ' ',' ', ' ', ' ', ' ', ' ', '#',
+    '#', ' ', ' ', ' ', '#', ' ',' ', ' ', ' ', ' ', ' ', '#',
+    '#', ' ', ' ', ' ', '#', '#','#', '#', '#', '#', ' ', '#',
+    '#', ' ', ' ', ' ', '#', ' ',' ', ' ', ' ', ' ', ' ', '#',
+    '#', '@', ' ', 'J', '#', 'E',' ', ' ', ' ', ' ', ' ', '#',
+    '#', '#', '#', '#', '#', '#','#', '#', '#', '#', '#', '#',
+};
+
+level LEVEL_5 = {
+    12, 12,
+    LEVEL_5_DATA
+};
+
+int level_index = 0;
+const int LEVEL_COUNT = 5;
+
+level LEVELS[LEVEL_COUNT] = {
+    LEVEL_1,
+    LEVEL_2,
+    LEVEL_3,
+    LEVEL_4,
+    LEVEL_5
+};
 /* Loaded Level Data */
 
 level current_level;
@@ -52,7 +126,7 @@ char *current_level_data;
 /* Player data */
 
 const float GRAVITY_FORCE = 0.01f;
-const float JUMP_STRENGTH = 0.3f;
+float JUMP_STRENGTH = 0.3f;
 const float MOVEMENT_SPEED = 0.1f;
 
 Vector2 player_pos;
@@ -121,6 +195,7 @@ Text victory_subtitle = {
 Texture2D wall_image;
 Texture2D air_image;
 Texture2D exit_image;
+Texture2D jump_boost_potion;
 
 struct sprite {
     size_t frame_count    = 0;
@@ -163,10 +238,12 @@ size_t game_frame = 0;
 /* Game States */
 
 enum game_state {
-    GAME_STATE
-    // TODO
+    MENU_STATE,
+    GAME_STATE,
+    PAUSE_STATE,
+    VICTORY_STATE
 };
-game_state game_state = GAME_STATE;
+game_state game_state = MENU_STATE;
 
 /* Forward Declarations */
 
