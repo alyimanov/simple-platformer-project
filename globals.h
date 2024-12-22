@@ -246,16 +246,25 @@ Text game_title = {
 };
 
 Text game_subtitle = {
-    "Press Enter to Start",
+    "Press Enter to Start\n\n"
+    "Collect every coin\n\nto finish the game",
     { 0.50f, 0.65f }
 };
 
 Text game_paused = {
+    "Press Escape to Resume. \n\n"
+    "Press E to exit game"
+};
+
+Text game_paused_for_hint = {
+    "Find three hidden levers\n\n"
+    "Press F to pull lever.\n\n"
     "Press Escape to Resume"
 };
 
+
 Text defeat_title = {
-    "Game Over."
+    "Game Over.\n\n"
     "Press Enter to return to Menu"
 };
 
@@ -330,7 +339,8 @@ enum game_state {
     GAME_STATE,
     PAUSE_STATE,
     VICTORY_STATE,
-    DEFEAT_STATE
+    DEFEAT_STATE,
+    HINT_STATE
 };
 game_state game_state = MENU_STATE;
 

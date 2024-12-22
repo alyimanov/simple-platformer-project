@@ -15,7 +15,6 @@ void update_game() {
             if (IsKeyPressed(KEY_ENTER)) {
                 game_state = GAME_STATE;
                 load_level(0);
-                player_score = 0;
             }
 
             break;
@@ -36,7 +35,10 @@ void update_game() {
 
             update_player();
 
-            if (IsKeyPressed(KEY_ESCAPE)) {
+            if (IsKeyPressed(KEY_ESCAPE) && level_index == 7) {
+                game_state = HINT_STATE;
+            }
+            else if (IsKeyPressed(KEY_ESCAPE)) {
                 game_state = PAUSE_STATE;
             }
             break;
@@ -45,10 +47,15 @@ void update_game() {
                 game_state = GAME_STATE;
             }
             break;
+        case HINT_STATE:
+            if (IsKeyPressed(KEY_ESCAPE)) {
+                game_state = GAME_STATE;
+            }
         case VICTORY_STATE:
             if (IsKeyPressed(KEY_ENTER)) {
                 game_state = MENU_STATE;
             }
+
             break;
         case DEFEAT_STATE:
             if (IsKeyPressed(KEY_ENTER)) {
@@ -81,7 +88,11 @@ void draw_game() {
         case DEFEAT_STATE:
             ClearBackground(BLACK);
             draw_defeat_screen();
-        break;
+            break;
+        case HINT_STATE:
+            ClearBackground(BLACK);
+            draw_pause_hint_menu();
+            break;
     }
 
 

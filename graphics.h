@@ -84,8 +84,8 @@ void draw_level() {
                 case DOOR:
                     if (!is_door_open) {
                         draw_image(door_image, pos, cell_size);
+                        break;
                     }
-                    break;
             }
             // The second image layer
             switch (cell) {
@@ -105,29 +105,26 @@ void draw_level() {
                         draw_image(sword_image, pos, cell_size);
                     break;
                 case LEVER1:
-                    if (lever_activation1 == false) {
-                        draw_image(lever_unactivated_image, pos, cell_size);
-                        break;
-                    } if (lever_activation1 == true) {
+                     if (lever_activation1 == true) {
                         draw_image(lever_activated_image, pos, cell_size);
                         break;
                     }
+                    draw_image(lever_unactivated_image, pos, cell_size);
+                    break;
                 case LEVER2:
-                    if (lever_activation2 == false) {
-                        draw_image(lever_unactivated_image, pos, cell_size);
-                        break;
-                    } if (lever_activation2 == true) {
+                     if (lever_activation2 == true) {
                         draw_image(lever_activated_image, pos, cell_size);
                         break;
                     }
+                    draw_image(lever_unactivated_image, pos, cell_size);
+                    break;
                 case LEVER3:
-                    if (lever_activation3 == false) {
-                        draw_image(lever_unactivated_image, pos, cell_size);
-                        break;
-                    } if (lever_activation3 == true) {
+                     if (lever_activation3 == true) {
                         draw_image(lever_activated_image, pos, cell_size);
                         break;
                     }
+                    draw_image(lever_unactivated_image, pos, cell_size);
+                    break;
                 case GRAAL:
                     draw_image(graal_image, pos, cell_size);
                     break;
@@ -151,6 +148,10 @@ void draw_player() {
 
 void draw_pause_menu() {
     draw_text(game_paused);
+}
+
+void draw_pause_hint_menu() {
+    draw_text(game_paused_for_hint);
 }
 
 void create_victory_menu_background() {

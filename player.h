@@ -76,22 +76,22 @@ void update_player() {
     }
 
     if (is_colliding(player_pos, LEVER1) && IsKeyPressed(KEY_F)) {
-        if (player_score >= 60) {
-            player_score -= 60;
+        if (player_score >= 70) {
+            player_score -= 70;
             lever_activation1 = true;
         }
     }
 
     if (is_colliding(player_pos, LEVER2) && IsKeyPressed(KEY_F)) {
-        if (player_score >= 60) {
-            player_score -= 60;
+        if (player_score >= 70) {
+            player_score -= 70;
             lever_activation2 = true;
         }
     }
 
     if (is_colliding(player_pos, LEVER3) && IsKeyPressed(KEY_F)) {
-        if (player_score >= 60) {
-            player_score -= 60;
+        if (player_score >= 70) {
+            player_score -= 70;
             lever_activation3 = true;
         }
     }
