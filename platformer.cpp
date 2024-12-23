@@ -14,7 +14,8 @@ void update_game() {
         case MENU_STATE:
             if (IsKeyPressed(KEY_ENTER)) {
                 game_state = GAME_STATE;
-                load_level(0);
+                level_index = 0;
+                player_score = 0;
             }
 
             break;
@@ -41,6 +42,10 @@ void update_game() {
             else if (IsKeyPressed(KEY_ESCAPE)) {
                 game_state = PAUSE_STATE;
             }
+            if (IsKeyPressed(KEY_NINE)) {
+                game_state = VICTORY_STATE;
+                create_victory_menu_background();
+            }
             break;
         case PAUSE_STATE:
             if (IsKeyPressed(KEY_ESCAPE)) {
@@ -55,7 +60,6 @@ void update_game() {
             if (IsKeyPressed(KEY_ENTER)) {
                 game_state = MENU_STATE;
             }
-
             break;
         case DEFEAT_STATE:
             if (IsKeyPressed(KEY_ENTER)) {

@@ -325,7 +325,7 @@ const float VICTORY_BALL_MAX_SPEED  = 2.0f;
 const float VICTORY_BALL_MIN_RADIUS = 2.0f;
 const float VICTORY_BALL_MAX_RADIUS = 3.0f;
 const Color VICTORY_BALL_COLOR      = { 180, 180, 180, 255 };
-const unsigned char VICTORY_BALL_TRAIL_TRANSPARENCY = 10;
+const unsigned char VICTORY_BALL_TRAIL_TRANSPARENCY = 100;
 victory_ball victory_balls[VICTORY_BALL_COUNT];
 
 /* Frame Counter */
