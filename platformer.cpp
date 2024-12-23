@@ -106,8 +106,8 @@ int main() {
     InitWindow(1024, 480, "Platformer");
     InitAudioDevice();
     SetTargetFPS(60);
-    SetMasterVolume(0.06);
-    SetMusicVolume(ost, 0.3f);
+    SetMasterVolume(0.1);
+    SetMusicVolume(ost, 0.4f);
 
     load_fonts();
     load_images();
