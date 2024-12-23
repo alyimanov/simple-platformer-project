@@ -123,6 +123,13 @@ void draw_sprite(sprite &sprite, Vector2 pos, float width, float height) {
 void load_sounds() {
     coin_sound = LoadSound("data/sounds/coin.wav");
     exit_sound = LoadSound("data/sounds/exit.wav");
+    potion_sound = LoadSound("data/sounds/potion_sound.mp3");
+    sword_sound = LoadSound("data/sounds/sword.mp3");
+    defeat_sound = LoadSound("data/sounds/defeat.mp3");
+    skeleton_death_sound = LoadSound("data/sounds/skeleton_death.mp3");
+    lever_sound = LoadSound("data/sounds/lever.mp3");
+    graal_sound = LoadSound("data/sounds/graal_acquired.mp3");
+    door_sound = LoadSound("data/sounds/door_opening.mp3");
 }
 
 void load_music() {

@@ -311,6 +311,16 @@ sprite player_sprite;
 
 Sound coin_sound;
 Sound exit_sound;
+Sound potion_sound;
+Sound sword_sound;
+Sound defeat_sound;
+Sound skeleton_death_sound;
+Sound lever_sound;
+Sound graal_sound;
+Sound door_sound;
+
+/* Music*/
+
 Music ost;
 
 /* Victory Menu Background */

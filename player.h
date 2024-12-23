@@ -45,6 +45,7 @@ void update_player() {
     if (is_colliding(player_pos, JUMP_BOOST_POTION)) {
         get_collider(player_pos, JUMP_BOOST_POTION) = ' ';
         JUMP_STRENGTH = 0.34f;
+        PlaySound(potion_sound);
     }
 
     if (is_colliding(player_pos, EXIT)) {
@@ -59,26 +60,30 @@ void update_player() {
         if (is_sword_picked == true) {
             UnloadTexture(skeleton_image);
             player_score += 100;
+            PlaySound(skeleton_death_sound);
         }
         else {
             game_state = DEFEAT_STATE;
+            PlaySound(defeat_sound);
         }
     }
 
     if (is_colliding(player_pos, SWORD)) {
         get_collider(player_pos, SWORD) = ' ';
         is_sword_picked = true;
+        PlaySound(sword_sound);
     }
 
     if (is_colliding(player_pos, SPIKES)) {
-        get_collider(player_pos, SPIKES) = ' ';
         game_state = DEFEAT_STATE;
+        PlaySound(defeat_sound);
     }
 
     if (is_colliding(player_pos, LEVER1) && IsKeyPressed(KEY_F)) {
         if (player_score >= 70) {
             player_score -= 70;
             lever_activation1 = true;
+            PlaySound(lever_sound);
         }
     }
 
@@ -86,6 +91,7 @@ void update_player() {
         if (player_score >= 70) {
             player_score -= 70;
             lever_activation2 = true;
+            PlaySound(lever_sound);
         }
     }
 
@@ -93,16 +99,19 @@ void update_player() {
         if (player_score >= 70) {
             player_score -= 70;
             lever_activation3 = true;
+            PlaySound(lever_sound);
         }
     }
 
     if (is_colliding(player_pos, GRAAL)) {
         get_collider(player_pos, GRAAL) = ' ';
         player_score+=10000;
+        PlaySound(graal_sound);
     }
 
     if (lever_activation1 == true && lever_activation2 == true && lever_activation3 == true) {
         is_door_open = true;
+        PlaySound(door_sound);
     }
 
     if (is_colliding(player_pos, DOOR) && !is_door_open) {

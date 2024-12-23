@@ -13,9 +13,10 @@ void update_game() {
     switch (game_state) {
         case MENU_STATE:
             if (IsKeyPressed(KEY_ENTER)) {
-                game_state = GAME_STATE;
                 level_index = 0;
                 player_score = 0;
+                game_state = GAME_STATE;
+                spawn_player();
             }
 
             break;
@@ -63,6 +64,8 @@ void update_game() {
             break;
         case DEFEAT_STATE:
             if (IsKeyPressed(KEY_ENTER)) {
+                level_index = 0;
+                load_level();
                 game_state = MENU_STATE;
             }
         break;
@@ -103,7 +106,8 @@ int main() {
     InitWindow(1024, 480, "Platformer");
     InitAudioDevice();
     SetTargetFPS(60);
-    SetMasterVolume(0.05);
+    SetMasterVolume(0.06);
+    SetMusicVolume(ost, 0.3f);
 
     load_fonts();
     load_images();
