@@ -311,6 +311,7 @@ sprite player_sprite;
 
 Sound coin_sound;
 Sound exit_sound;
+Music ost;
 
 /* Victory Menu Background */
 
@@ -398,6 +399,9 @@ void draw_sprite(sprite &sprite, Vector2 pos, float size);
 
 void load_sounds();
 void unload_sounds();
+
+void load_music();
+void unload_music();
 
 // UTILITIES_H
 

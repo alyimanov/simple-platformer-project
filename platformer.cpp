@@ -67,7 +67,6 @@ void update_game() {
             }
         break;
     }
-
 }
 
 void draw_game() {
@@ -98,22 +97,26 @@ void draw_game() {
             draw_pause_hint_menu();
             break;
     }
-
-
 }
 
 int main() {
     InitWindow(1024, 480, "Platformer");
+    InitAudioDevice();
     SetTargetFPS(60);
+    SetMasterVolume(0.05);
 
     load_fonts();
     load_images();
     load_sounds();
     load_level();
+    load_music();
 
     SetExitKey(KEY_E);
 
     while (!WindowShouldClose()) {
+        UpdateMusicStream(ost);
+        PlayMusicStream(ost);
+
         BeginDrawing();
 
         update_game();
@@ -126,6 +129,7 @@ int main() {
     unload_sounds();
     unload_images();
     unload_fonts();
+    unload_music();
 
     CloseAudioDevice();
     CloseWindow();
